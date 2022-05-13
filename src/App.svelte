@@ -1,51 +1,17 @@
 <script>
-
-    import ComponentA from "./ComponentA.svelte";
-
-    let person = {
-        name: "",
-        age: null
-    }
-
-    function submit() {
-        alert("foo");
-    }
-
+    import Router from "svelte-spa-router"
+    import routes from "./routes"
+    import Navigation from "./components/Navigation.svelte";
 </script>
 
-<main>
 
-    <form>
-        <label>Name</label>
-        <input bind:value={person.name} type="text">
 
-        <label>Age</label>
-        <input bind:value={person.age} type="number">
+<div id="app">
 
-        <label></label>
-        <button on:click={submit}>Submit</button>
+    <div class="container">
+        <h1>Dirt Alert</h1>
+        <Navigation/>
+        <Router {routes}/>
+    </div>
 
-        <p>{person.name}</p>
-        <p>{person.age}</p>
-
-        <ComponentA message="Foobar" />
-        <ComponentA/>
-        <ComponentA/>
-    </form>
-
-</main>
-
-<style>
-    main {
-        text-align: center;
-        padding: 1em;
-        max-width: 240px;
-        margin: 0 auto;
-    }
-
-    @media (min-width: 640px) {
-        main {
-            max-width: none;
-        }
-    }
-</style>
+</div>
