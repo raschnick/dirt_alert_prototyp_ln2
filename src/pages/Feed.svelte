@@ -7,17 +7,23 @@
         {
             title: "Aufräumaktion in Spreitenbach",
             awards: [
-                "award"
+                "silver",
+                "wholesome"
             ]
         },
         {
-            title: "Sauberer Strand in Männedorf"
+            title: "Sauberer Strand in Männedorf",
+            awards: [
+                "wholesome",
+                "helpful"
+            ]
         },
         {
-            title: "Schöner Wald in Wald"
-        },
-        {
-            title: "Kein See in Oetwil am See"
+            title: "Schöner Wald in Wald",
+            awards: [
+                "gold",
+                "platinum"
+            ]
         },
     ]
 

@@ -15,15 +15,20 @@
 
 
 <style>
+
     #header {
         overflow: hidden;
         margin-top: 10px;
         margin-bottom: 10px;
     }
+
     #title {
         float:left;
+        color: #7CD175;
     }
+
     #createButton {
         float: right;
     }
+
 </style>
