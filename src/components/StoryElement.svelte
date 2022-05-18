@@ -1,9 +1,18 @@
 <script>
+
+    import {tick} from "svelte";
+    import {ConfettiExplosion} from "svelte-confetti-explosion";
+
     export let title = "No title provided";
     export let awards = [];
+    export let isVisible = false;
 
-    function addAward(event) {
+
+    async function addAward(event) {
         awards = [...awards, event.target.value]
+        isVisible = false;
+        await tick();
+        isVisible = true;
     }
 
     let awardTypes = [
@@ -44,6 +53,9 @@
                 <img src="/img/story_placeholder.jpg" class="story-image" alt="image missing"/>
             </div>
             <div class="col-9">
+                {#if isVisible}
+                    <ConfettiExplosion particleCount={200} force={0.3} />
+                {/if}
                 <p><b>{title}</b></p>
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addAwardModal">
                     Add Award

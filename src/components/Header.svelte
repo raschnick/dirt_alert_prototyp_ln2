@@ -1,18 +1,33 @@
 <script>
+
+    import CreateUserModal from "./modals/CreateUserModal.svelte";
+    import CreateStoryModal from "./modals/CreateStoryModal.svelte";
+    import CreateAwardModal from "./modals/CreateAwardModal.svelte";
+
     export let name = "No name provided";
     export let createType = "No creation type provided";
 
-    function create() {
-        alert("not implemented yet.");
-    }
 </script>
 
 
 <div id="header">
     <h3 id="title">{name}</h3>
-    <button id="createButton" class="btn btn-success" on:click={create}>Create new {createType}</button>
+
+    {#if createType === "Story"}
+        <button class="createButton btn btn-success" data-bs-toggle="modal" data-bs-target="#createStoryModal">Create new {createType}</button>
+    {:else if createType === "Award"}
+        <button class="createButton btn btn-success" data-bs-toggle="modal" data-bs-target="#createAwardModal">Create
+            new {createType}</button>
+    {:else if createType === "User"}
+        <button class="createButton btn btn-success" data-bs-toggle="modal" data-bs-target="#createUserModal">Create
+            new {createType}</button>
+    {/if}
+
 </div>
 
+<CreateStoryModal />
+<CreateAwardModal />
+<CreateUserModal />
 
 <style>
 
@@ -23,11 +38,11 @@
     }
 
     #title {
-        float:left;
+        float: left;
         color: #7CD175;
     }
 
-    #createButton {
+    .createButton {
         float: right;
     }
 
