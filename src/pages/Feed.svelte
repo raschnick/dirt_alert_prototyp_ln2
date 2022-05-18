@@ -5,6 +5,7 @@
 
     let stories = [
         {
+            id: 1,
             title: "Aufräumaktion in Spreitenbach",
             awards: [
                 "silver",
@@ -12,6 +13,7 @@
             ]
         },
         {
+            id: 2,
             title: "Sauberer Strand in Männedorf",
             awards: [
                 "wholesome",
@@ -19,6 +21,7 @@
             ]
         },
         {
+            id: 3,
             title: "Schöner Wald in Wald",
             awards: [
                 "gold",
@@ -32,7 +35,7 @@
 <Header name="Feed" createType="Story" />
 
 {#each stories as story}
-    <StoryElement title={story.title} awards={story.awards} />
+    <StoryElement id={story.id} title={story.title} awards={story.awards} />
 {/each}
 
 

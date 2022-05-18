@@ -5,11 +5,14 @@
 
     export let title = "No title provided";
     export let awards = [];
-    export let isVisible = false;
+    export let id = 0;
 
+    let isVisible = false;
 
     async function addAward(event) {
+        console.log(awards);
         awards = [...awards, event.target.value]
+        console.log(awards);
         isVisible = false;
         await tick();
         isVisible = true;
@@ -57,7 +60,7 @@
                     <ConfettiExplosion particleCount={200} force={0.3} />
                 {/if}
                 <p><b>{title}</b></p>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addAwardModal">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addAwardModal{id}">
                     Add Award
                 </button>
                 {#each awards as award}
@@ -69,7 +72,7 @@
 
 
     <!-- Add Award Modal -->
-    <div class="modal fade" id="addAwardModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="addAwardModal{id}" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
