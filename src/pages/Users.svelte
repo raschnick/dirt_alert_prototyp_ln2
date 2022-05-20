@@ -32,8 +32,20 @@
 
 {#each users as user}
     <div class="user-element">
-        <p><b>Name:</b> {user.name}</p>
-        <p><b>Email:</b> {user.email}</p>
+
+        <div class="container">
+            <div class="row row-cols-5">
+                <div class="col">
+                    <img src="/img/avatar_placeholder_{user.gender}.jpg" class="user-image" alt="image missing"/>
+                </div>
+                <div class="col-9">
+                    <p><b>Name:</b> {user.name}</p>
+                    <p><b>Email:</b> {user.email}</p>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 {/each}
 
@@ -46,6 +58,10 @@
         border-radius: 15px;
         border: solid #999999 1px;
         background: #EEFFEE;
+    }
+
+    .user-image {
+        width: 100%;
     }
 
 </style>

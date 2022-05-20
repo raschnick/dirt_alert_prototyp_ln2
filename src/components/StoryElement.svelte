@@ -57,10 +57,12 @@
             </div>
             <div class="col-9">
                 {#if isVisible}
-                    <ConfettiExplosion particleCount={200} force={0.3} />
+                    <ConfettiExplosion particleCount={100} force={0.5} stageHeight={800} stageWidth={800}
+                                       particlesShape="rectangles" duration={3000} colors={['#008800']}/>
                 {/if}
                 <p><b>{title}</b></p>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addAwardModal{id}">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#addAwardModal{id}">
                     Add Award
                 </button>
                 {#each awards as award}
@@ -76,7 +78,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Awards</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Choose an Award for "{title}"</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

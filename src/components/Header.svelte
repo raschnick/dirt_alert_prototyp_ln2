@@ -14,7 +14,8 @@
     <h3 id="title">{name}</h3>
 
     {#if createType === "Story"}
-        <button class="createButton btn btn-success" data-bs-toggle="modal" data-bs-target="#createStoryModal">Create new {createType}</button>
+        <button class="createButton btn btn-success" data-bs-toggle="modal" data-bs-target="#createStoryModal">Create
+            new {createType}</button>
     {:else if createType === "Award"}
         <button class="createButton btn btn-success" data-bs-toggle="modal" data-bs-target="#createAwardModal">Create
             new {createType}</button>
@@ -25,9 +26,9 @@
 
 </div>
 
-<CreateStoryModal />
-<CreateAwardModal />
-<CreateUserModal />
+<CreateStoryModal/>
+<CreateAwardModal/>
+<CreateUserModal/>
 
 <style>
 
