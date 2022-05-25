@@ -2,10 +2,11 @@
 
     import {tick} from "svelte";
     import {ConfettiExplosion} from "svelte-confetti-explosion";
+    import axios from "axios";
 
     export let title = "No title provided";
     export let awards = [];
-    export let id = 0;
+    export let id = undefined;
 
     let isVisible = false;
 
@@ -18,33 +19,16 @@
         isVisible = true;
     }
 
-    let awardTypes = [
-        {
-            name: "Silver",
-            description: "Worship a kind stranger with this fine piece of internet pixels!",
-            imagePath: "silver.png"
-        },
-        {
-            name: "Gold",
-            description: "Worship a kind stranger with this EXTRA fine piece of internet pixels!",
-            imagePath: "gold.png"
-        },
-        {
-            name: "Platinum",
-            description: "At this point you're just throwing bucks at strangers!",
-            imagePath: "platinum.png"
-        },
-        {
-            name: "Helpful",
-            description: "Show your gratitude for a stranger and his help for the planet!",
-            imagePath: "helpful.png"
-        },
-        {
-            name: "Wholesome",
-            description: "Give this to a fellow cleaner when his effort is extra wholesome!",
-            imagePath: "wholesome.png"
-        },
-    ]
+    let awardTypes = [];
+
+    function loadAwardTypes() {
+
+        axios.get("http://localhost:3001/api/awards").then((response) => {
+            awardTypes = response.data;
+        });
+    }
+
+    loadAwardTypes();
 
 </script>
 
@@ -55,7 +39,7 @@
             <div class="col">
                 <img src="/img/story_placeholder.jpg" class="story-image" alt="image missing"/>
             </div>
-            <div class="col-9">
+            <div class="col-7">
                 {#if isVisible}
                     <ConfettiExplosion particleCount={100} force={0.5} stageHeight={800} stageWidth={800}
                                        particlesShape="rectangles" duration={3000} colors={['#008800']}/>
@@ -68,6 +52,11 @@
                 {#each awards as award}
                     <img src="/img/{award}.png" class="award" alt="image missing"/>
                 {/each}
+            </div>
+            <div class="col-2">
+                <a class="btn btn-secondary details-link" href={"#/stories/" + id}>
+                    See Story Details
+                </a>
             </div>
         </div>
     </div>
@@ -145,6 +134,10 @@
 
     .btn-select {
         margin: auto;
+    }
+
+    .details-link {
+        color: white;
     }
 
 </style>
