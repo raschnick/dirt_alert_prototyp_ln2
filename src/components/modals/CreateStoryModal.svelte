@@ -18,7 +18,6 @@
                 console.log(error);
             });
         location.reload();
-        // TODO: Save result to mongo db & reload stories in feed
     }
 
 </script>

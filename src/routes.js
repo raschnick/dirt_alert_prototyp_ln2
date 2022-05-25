@@ -1,8 +1,9 @@
-import Awards from "./pages/Awards.svelte";
-import Feed from "./pages/Feed/Feed.svelte";
+import Awards from "./pages/awards/Awards.svelte";
+import Feed from "./pages/feed/Feed.svelte";
 import Users from "./pages/Users.svelte";
 import Form from "./pages/FormDemo.svelte";
-import StoryDetails from "./pages/Feed/StoryDetails.svelte";
+import StoryDetails from "./pages/feed/StoryDetails.svelte";
+import AwardDetails from "./pages/awards/AwardDetails.svelte";
 
 export default {
     // Feed / Stories
@@ -11,6 +12,7 @@ export default {
 
     // Awards
     '/awards': Awards,
+    '/awards/:id': AwardDetails,
 
     // Users
     '/users': Users,

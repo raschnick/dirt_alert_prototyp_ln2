@@ -8,27 +8,70 @@
     export let awards = [];
     export let id = undefined;
 
+    let awardTypes = [];
+    let awardDetails = [];
     let isVisible = false;
+    let awardStories = [];
+
+    loadAwardTypes();
+    awards.forEach(getAwardDetails)
+
 
     async function addAward(event) {
-        console.log(awards);
-        awards = [...awards, event.target.value]
-        console.log(awards);
+        let awardId = event.target.value;
+        awards = [...awards, awardId]
+
+        axios.put('http://localhost:3001/api/stories/' + id, {
+            awards: awards,
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+        axios.get('http://localhost:3001/api/awards/' + awardId)
+            .then( (response) => {
+                console.log(response);
+                awardStories = response.data.stories;
+            })
+            .catch( (error) => {
+                console.log(error);
+            })
+
+        awardStories = [...awardStories, id];
+
+        axios.put('http://localhost:3001/api/awards/' + awardId, {
+            stories: awardStories,
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        // confetti explosion
         isVisible = false;
         await tick();
         isVisible = true;
+
+        setTimeout(() => { location.reload(); }, 1000);
     }
 
-    let awardTypes = [];
+    function getAwardDetails(item) {
+        axios.get("http://localhost:3001/api/awards/" + item).then((response) => {
+            awardDetails = [...awardDetails, response.data]
+        });
+    }
 
     function loadAwardTypes() {
-
         axios.get("http://localhost:3001/api/awards").then((response) => {
             awardTypes = response.data;
         });
     }
-
-    loadAwardTypes();
 
 </script>
 
@@ -49,8 +92,8 @@
                         data-bs-target="#addAwardModal{id}">
                     Add Award
                 </button>
-                {#each awards as award}
-                    <img src="/img/{award}.png" class="award" alt="image missing"/>
+                {#each awardDetails as award}
+                    <img src="/img/{award.imagePath}" class="award" alt="image missing"/>
                 {/each}
             </div>
             <div class="col-2">
@@ -84,7 +127,7 @@
                                 </div>
 
                                 <div class="col-3 centered-col">
-                                    <button on:click={addAward} value={awardType.name}
+                                    <button on:click={addAward} value={awardType._id}
                                             class="btn btn-success btn-select" data-bs-dismiss="modal">Add
                                     </button>
                                 </div>

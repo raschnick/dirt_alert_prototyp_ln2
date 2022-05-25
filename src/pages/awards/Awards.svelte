@@ -1,18 +1,19 @@
 <script>
 
-    import Header from "../components/Header.svelte";
+    import Header from "../../components/Header.svelte";
     import axios from "axios";
 
     let awards = [];
 
-    function loadAwards() {
+    loadAwards();
 
+    function loadAwards() {
         axios.get("http://localhost:3001/api/awards").then((response) => {
             awards = response.data;
         });
     }
 
-    loadAwards();
+
 
 </script>
 
@@ -29,6 +30,9 @@
                         <img src="/img/{award.imagePath}" width="100" height="100" alt="image missing"/>
                     </div>
                     <p>{award.description}</p>
+                    <a class="btn btn-secondary details-link" href={"#/awards/" + award._id}>
+                        See Award Details
+                    </a>
                 </div>
             </div>
         {/each}
@@ -49,6 +53,10 @@
         display: flex;
         justify-content: center;
         margin-bottom: 15px;
+    }
+
+    .details-link {
+        color: white;
     }
 
 </style>
