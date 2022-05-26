@@ -1,6 +1,5 @@
 <script>
 
-    import Header from "../../components/Header.svelte";
     import axios from "axios";
 
     let awards = [];
@@ -31,8 +30,8 @@
                         <img src="/img/{award.imagePath}" width="100" height="100" alt="image missing"/>
                     </div>
                     <p>{award.description}</p>
-                    <a class="btn btn-secondary details-link" href={"#/awards/" + award._id}>
-                        See Award Details
+                    <a class="details-link" href={"#/awards/" + award._id}>
+                        See Award Details >
                     </a>
                 </div>
             </div>
@@ -68,7 +67,8 @@
     }
 
     .details-link {
-        color: white;
+        color: #333333;
+        font-weight: bold;
     }
 
 </style>

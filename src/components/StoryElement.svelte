@@ -24,20 +24,16 @@
         axios.put('http://localhost:3001/api/stories/' + id, {
             awards: awards,
         })
-            .then(function (response) {
-                console.log(response);
-            })
             .catch(function (error) {
                 console.log(error);
             });
 
 
         axios.get('http://localhost:3001/api/awards/' + awardId)
-            .then( (response) => {
-                console.log(response);
+            .then((response) => {
                 awardStories = response.data.stories;
             })
-            .catch( (error) => {
+            .catch((error) => {
                 console.log(error);
             })
 
@@ -46,9 +42,6 @@
         axios.put('http://localhost:3001/api/awards/' + awardId, {
             stories: awardStories,
         })
-            .then(function (response) {
-                console.log(response);
-            })
             .catch(function (error) {
                 console.log(error);
             });
@@ -58,7 +51,9 @@
         await tick();
         isVisible = true;
 
-        setTimeout(() => { location.reload(); }, 1000);
+        setTimeout(() => {
+            location.reload();
+        }, 1000);
     }
 
     function getAwardDetails(item) {
@@ -78,14 +73,14 @@
 
 <div class="story-element">
     <div class="container">
-        <div class="row row-cols-5">
-            <div class="col">
+        <div class="row">
+            <div class="col-3">
                 <img src="/img/story_placeholder.jpg" class="story-image" alt="image missing"/>
             </div>
-            <div class="col-7">
+            <div class="col-6">
                 {#if isVisible}
                     <ConfettiExplosion particleCount={100} force={0.5} stageHeight={800} stageWidth={800}
-                                       particlesShape="rectangles" duration={3000} colors={['#008800']}/>
+                                       particlesShape="rectangles" duration={3000} colors={['#7CD175']}/>
                 {/if}
                 <p><b>{title}</b></p>
                 <button type="button" class="btn btn-success" data-bs-toggle="modal"
@@ -95,11 +90,11 @@
                 {#each awardDetails as award}
                     <img src="/img/{award.imagePath}" class="award" alt="image missing"/>
                 {/each}
-            </div>
-            <div class="col-2">
-                <a class="btn btn-secondary details-link" href={"#/stories/" + id}>
-                    See Story Details
-                </a>
+                <p class="mt-5">
+                    <a class="details-link" href={"#/stories/" + id}>
+                        See Story Details >
+                    </a>
+                </p>
             </div>
         </div>
     </div>
@@ -125,14 +120,12 @@
                                     <b>{awardType.name}</b>
                                     <p>{awardType.description}</p>
                                 </div>
-
                                 <div class="col-3 centered-col">
                                     <button on:click={addAward} value={awardType._id}
                                             class="btn btn-success btn-select" data-bs-dismiss="modal">Add
                                     </button>
                                 </div>
                             </div>
-
                         </div>
                     {/each}
                 </div>
@@ -180,7 +173,8 @@
     }
 
     .details-link {
-        color: white;
+        color: #333333;
+        font-weight: bold;
     }
 
 </style>

@@ -1,6 +1,5 @@
 <script>
 
-    import Header from "../components/Header.svelte";
     import axios from "axios";
 
     let user = {
@@ -21,8 +20,6 @@
     }
 
 </script>
-
-<Header name="Form" createType="Demo" />
 
 
 <label for="name-input">Name: </label>

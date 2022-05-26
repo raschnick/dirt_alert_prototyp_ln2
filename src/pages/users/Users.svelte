@@ -1,29 +1,16 @@
 <script>
 
-    import Header from "../components/Header.svelte";
+    import axios from "axios";
 
-    let users = [
-        {
-            name: "Jack Smith",
-            gender: "m",
-            email: "jack.smith@email.com"
-        },
-        {
-            name: "Kathrin Kühn",
-            gender: "f",
-            email: "kathrin.kuehn@email.com"
-        },
-        {
-            name: "Max Mustermann",
-            gender: "m",
-            email: "max.mustermann@email.com"
-        },
-        {
-            name: "Foo Bar",
-            gender: "m",
-            email: "foo.bar@email.com"
-        },
-    ]
+    let users = [];
+
+    loadUsers();
+
+    function loadUsers() {
+        axios.get("http://localhost:3001/api/users").then((response) => {
+            users = response.data;
+        });
+    }
 
 </script>
 
@@ -54,8 +41,8 @@
 <style>
 
     #header {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     #title {

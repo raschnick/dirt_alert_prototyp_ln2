@@ -1,7 +1,6 @@
 <script>
 
     import StoryElement from "../../components/StoryElement.svelte";
-    import Header from "../../components/Header.svelte";
     import axios from "axios";
     import CreateStoryModal from "../../components/modals/CreateStoryModal.svelte";
 
