@@ -16,9 +16,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#/users">Users</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#/form">Form</a>
-                </li>
             </ul>
         </div>
     </div>
