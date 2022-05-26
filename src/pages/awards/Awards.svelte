@@ -17,8 +17,9 @@
 
 </script>
 
-
-<Header name="Awards" createType="Award"/>
+<div id="header">
+    <h3 id="title">Awards Overview</h3>
+</div>
 
 <div class="container">
     <div class="row row-cols-4">
@@ -40,6 +41,17 @@
 </div>
 
 <style>
+
+    #header {
+        overflow: hidden;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #title {
+        float: left;
+        color: #7CD175;
+    }
 
     .award-element {
         margin-bottom: 20px;

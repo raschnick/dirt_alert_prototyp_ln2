@@ -27,8 +27,9 @@
 
 </script>
 
-
-<Header name="Users" createType="User"/>
+<div id="header">
+    <h3 id="title">User Overview</h3>
+</div>
 
 {#each users as user}
     <div class="user-element">
@@ -51,6 +52,15 @@
 
 
 <style>
+
+    #header {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #title {
+        color: #7CD175;
+    }
 
     .user-element {
         margin-bottom: 20px;
