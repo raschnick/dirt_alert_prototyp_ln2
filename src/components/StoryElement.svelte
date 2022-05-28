@@ -21,6 +21,7 @@
         let awardId = event.target.value;
         awards = [...awards, awardId]
 
+        // update award keys in the story object
         axios.put('http://localhost:3001/api/stories/' + id, {
             awards: awards,
         })
@@ -29,6 +30,7 @@
             });
 
 
+        // get current stories linked to the award
         axios.get('http://localhost:3001/api/awards/' + awardId)
             .then((response) => {
                 awardStories = response.data.stories;
@@ -39,6 +41,7 @@
 
         awardStories = [...awardStories, id];
 
+        // update story keys in the award objects
         axios.put('http://localhost:3001/api/awards/' + awardId, {
             stories: awardStories,
         })

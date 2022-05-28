@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "magic-snowflakes": "^6.0.1",
     "sirv-cli": "^2.0.0",
     "svelte-confetti-explosion": "^0.2.0",
     "svelte-select": "^4.4.7",

@@ -2,6 +2,16 @@
     import Router from "svelte-spa-router"
     import routes from "./routes"
     import Navigation from "./components/Navigation.svelte";
+    import Snowflakes from 'magic-snowflakes';
+
+    const snowflakes = new Snowflakes();
+
+    snowflakes.stop();
+
+
+    function letItSnow() {
+        snowflakes.start();
+    }
 </script>
 
 
@@ -11,7 +21,7 @@
     <div class="container">
         <div id="title-container" >
             <h1 id="title">Dirt Alert</h1>
-            <img src="/img/logo.png" id="logo" alt="logo not found" />
+            <img on:click={letItSnow} src="/img/logo.png" id="logo" alt="logo not found" />
         </div>
         <Navigation/>
         <Router {routes}/>
