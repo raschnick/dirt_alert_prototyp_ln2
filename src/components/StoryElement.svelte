@@ -34,20 +34,20 @@
         axios.get('http://localhost:3001/api/awards/' + awardId)
             .then((response) => {
                 awardStories = response.data.stories;
+
+                awardStories = [...awardStories, id];
+
+                // update story keys in the award objects
+                axios.put('http://localhost:3001/api/awards/' + awardId, {
+                    stories: awardStories,
+                })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             })
             .catch((error) => {
                 console.log(error);
             })
-
-        awardStories = [...awardStories, id];
-
-        // update story keys in the award objects
-        axios.put('http://localhost:3001/api/awards/' + awardId, {
-            stories: awardStories,
-        })
-            .catch(function (error) {
-                console.log(error);
-            });
 
         // confetti explosion
         isVisible = false;

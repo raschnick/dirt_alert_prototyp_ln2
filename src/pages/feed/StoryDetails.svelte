@@ -57,9 +57,11 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h1>{story.title}</h1>
-            <p><b>Date: </b>{story.date}</p>
-            <p><b>User: </b>{user.name}</p>
+            <h3>{story.title}</h3>
+            <p><b>Date: </b></p>
+            <p>{story.date}</p>
+            <p><b>User: </b></p>
+            <p>{user.name}</p>
             <p><b>Awards: </b></p>
             {#each awardDetails as award}
                 <img src="/img/{award.imagePath}" class="award"/>
@@ -74,6 +76,10 @@
 
 
 <style>
+    h3 {
+        color: #7CD175;
+    }
+
     .award {
         margin-left: 10px;
         width: 30px;

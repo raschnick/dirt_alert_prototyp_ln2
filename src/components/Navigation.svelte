@@ -2,7 +2,7 @@
 
 </script>
 
-<nav class="navbar navbar-expand-lg navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-expand-sm navbar-light bg-light mb-4">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">

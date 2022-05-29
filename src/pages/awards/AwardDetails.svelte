@@ -37,15 +37,37 @@
 </script>
 
 
-<h1>{award.name}</h1>
-
-<h2>Stories linked to this award:</h2>
-
-{#each linkedStories as story}
-    <p>{story.title}</p>
-{/each}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h3>{award.name}</h3>
+            <p><b>Description: </b></p>
+            <p>{award.description}</p>
+            <p><b>Stories: </b></p>
+            {#if linkedStories.length < 1 }
+                <p>No Stories linked to this award yet.</p>
+            {:else}
+                <ul>
+                    {#each linkedStories as story}
+                        <li>{story.title}</li>
+                    {/each}
+                </ul>
+            {/if}
+        </div>
+        <div class="col-6 col-centered">
+            <p></p>
+            <img src="/img/{award.imagePath}" id="award-image" alt="image missing"/>
+        </div>
+    </div>
+</div>
 
 
 <style>
+    h3 {
+        color: #7CD175;
+    }
 
+    #award-image {
+        max-width: 25%;
+    }
 </style>

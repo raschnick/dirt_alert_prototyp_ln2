@@ -4,7 +4,9 @@
     import Navigation from "./components/Navigation.svelte";
     import Snowflakes from 'magic-snowflakes';
 
-    const snowflakes = new Snowflakes();
+    var snowflakes = new Snowflakes({
+        count: 100, // 100 snowflakes. Default: 50
+    });
 
     snowflakes.stop();
 
