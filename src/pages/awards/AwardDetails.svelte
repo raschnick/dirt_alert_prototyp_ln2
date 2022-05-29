@@ -33,6 +33,13 @@
             })
     }
 
+    function openStoryDetails(event) {
+        console.log("event.target: " + event.target);
+        let storyId = event.target.value;
+        console.log("storyId: " + storyId);
+        //window.open("#/stories/" + storyId);
+    }
+
 
 </script>
 
@@ -49,7 +56,7 @@
             {:else}
                 <ul>
                     {#each linkedStories as story}
-                        <li>{story.title}</li>
+                        <li><a href={"#/stories/" + story._id} class="story-link">{story.title}</a></li>
                     {/each}
                 </ul>
             {/if}
@@ -69,5 +76,9 @@
 
     #award-image {
         max-width: 25%;
+    }
+
+    .story-link {
+        color: black;
     }
 </style>

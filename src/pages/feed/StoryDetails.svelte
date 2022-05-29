@@ -2,8 +2,6 @@
 
     import axios from "axios";
 
-    const BACKEND_URL = '';
-
     export let params = {};
 
     let storyId;
@@ -63,12 +61,16 @@
             <p><b>User: </b></p>
             <p>{user.name}</p>
             <p><b>Awards: </b></p>
-            {#each awardDetails as award}
-                <img src="/img/{award.imagePath}" class="award"/>
-            {/each}
+            {#if awardDetails.length < 1 }
+                <p>This story hasn't received any awards yet.</p>
+            {:else}
+                {#each awardDetails as award}
+                    <img src="/img/{award.imagePath}" class="award"/>
+                {/each}
+            {/if}
+
         </div>
         <div class="col-6">
-            <p></p>
             <img src="/img/story_placeholder.jpg" id="story-image" alt="image missing"/>
         </div>
     </div>
